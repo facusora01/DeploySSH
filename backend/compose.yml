@@ -1,0 +1,49 @@
+services:
+
+  postgres:
+    image: postgres:17.9-bookworm
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - "${DATABASE_PORT:-5432}:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USER} -d ${DATABASE_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - appointa-net
+
+  appointa-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - "8080:${PORT}"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_PORT=5432
+      - DATABASE_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    networks:
+      - appointa-net
+
+volumes:
+  db-data:
+
+networks:
+  appointa-net:
+    driver: bridge

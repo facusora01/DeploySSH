@@ -1,0 +1,288 @@
+/* ============================================
+   RESERVAR TURNO STYLES
+============================================ */
+.booking-page {
+  flex: 1;
+  width: 100%;
+  padding: 48px 24px;
+  box-sizing: border-box;
+}
+
+.booking-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.booking-card {
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-dates-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 6px 2px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.booking-date-btn {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 75px;
+  user-select: none;
+}
+
+.booking-date-btn:hover:not(.is-selected) {
+  border-color: var(--accent-border);
+  transform: translateY(-1px);
+}
+
+.booking-date-btn.is-selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+.booking-date-day-name {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.booking-date-day-num {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+.booking-date-month {
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 1px;
+  opacity: 0.8;
+}
+
+.booking-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.booking-slot-btn {
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  user-select: none;
+}
+
+.booking-slot-btn:hover:not(.is-disabled):not(.is-selected) {
+  border-color: var(--accent-border);
+  transform: translateY(-1px);
+}
+
+.booking-slot-btn.is-selected {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.booking-slot-btn.is-disabled {
+  opacity: 0.5;
+  background: var(--border);
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.booking-slot-time {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.booking-slot-occupancy {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.booking-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.booking-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.booking-form-group label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.booking-form-group input,
+.booking-form-group textarea {
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-h);
+  transition: border-color 0.15s ease;
+}
+
+.booking-form-group input:focus,
+.booking-form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.booking-form-group select {
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-h);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  appearance: auto;
+}
+
+.booking-form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.booking-radio-group {
+  display: flex;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.booking-radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  color: var(--text-h);
+  cursor: pointer;
+  user-select: none;
+}
+
+.booking-radio-label input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.booking-success-card {
+  padding: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.booking-success-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.booking-success-details {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.booking-success-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.booking-success-label {
+  color: var(--muted);
+}
+
+.booking-success-value {
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+/* Spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 1s linear infinite;
+}

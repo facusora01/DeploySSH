@@ -1,0 +1,59 @@
+.equipo-team-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.equipo-team-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.equipo-team-item:last-child {
+  border-bottom: none;
+}
+
+.equipo-team-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.equipo-team-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.equipo-team-avatar--placeholder {
+  background-color: var(--accent-bg, #e8f4ff);
+  color: var(--accent, #0070f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.equipo-team-name {
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.equipo-team-specialty {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #777;
+}

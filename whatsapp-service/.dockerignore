@@ -1,0 +1,8 @@
+# node_modules se instala dentro de la imagen (npm install); no copiar el del host.
+node_modules
+
+# La sesión se monta como volumen (docker-compose), no se hornea en la imagen.
+.wwhatsapp_auth
+
+npm-debug.log
+*.log

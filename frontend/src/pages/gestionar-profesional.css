@@ -1,0 +1,267 @@
+.gp-page {
+  min-height: 100vh;
+  background: var(--bg, #f8f9fb);
+  padding: 2rem 1rem 4rem;
+}
+
+.gp-container {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gp-back {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent, #0070f3);
+  font-size: 0.9rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.gp-back:hover {
+  text-decoration: underline;
+}
+
+.gp-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.gp-header-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gp-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.gp-avatar--placeholder {
+  background: var(--accent-bg, #e8f4ff);
+  color: var(--accent, #0070f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.gp-name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-h, #111);
+}
+
+.gp-specialty {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted, #777);
+}
+
+/* Tabs */
+.gp-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 2px solid var(--border, #e5e7eb);
+  padding-bottom: 0;
+}
+
+.gp-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted, #888);
+  cursor: pointer;
+  transition: color 150ms, border-color 150ms;
+}
+
+.gp-tab:hover {
+  color: var(--text-h, #111);
+}
+
+.gp-tab--active {
+  color: var(--accent, #0070f3);
+  border-bottom-color: var(--accent, #0070f3);
+}
+
+/* Panel content */
+.gp-panel {
+  background: var(--surface, #fff);
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.gp-panel--horarios {
+  padding: 2rem;
+}
+
+.gp-panel--horarios > .agenda-header {
+  margin-bottom: 1.75rem !important;
+}
+
+.gp-panel--horarios > .agenda-feedback {
+  margin-bottom: 1.75rem;
+}
+
+.gp-panel--horarios > .agenda-section + .agenda-section {
+  margin-top: 2.25rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--border, #e5e7eb);
+}
+
+.gp-panel--horarios .agenda-section {
+  gap: 1.1rem;
+}
+
+/* Perfil form */
+.gp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 560px;
+}
+
+.gp-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gp-form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-h, #333);
+}
+
+.gp-textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text, #333);
+  background: var(--input-bg, #fff);
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 150ms;
+  box-sizing: border-box;
+}
+
+.gp-textarea:focus {
+  outline: none;
+  border-color: var(--accent, #0070f3);
+  box-shadow: 0 0 0 3px var(--accent-bg, rgba(0, 112, 243, 0.1));
+}
+
+.gp-photo-preview {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 0.5rem;
+  border: 2px solid var(--border, #e5e7eb);
+}
+
+.gp-feedback {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.gp-feedback--success {
+  background: #e9f8ef;
+  color: #1b7f43;
+}
+
+.gp-feedback--error {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+/* Loading / error states */
+.gp-loading {
+  color: var(--muted, #888);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.gp-load-error {
+  padding: 1rem;
+  background: #fdecea;
+  color: #c0392b;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Danger zone */
+.gp-danger-zone {
+  border-top: 1px solid var(--border, #e5e7eb);
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.gp-danger-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted, #888);
+  max-width: 400px;
+}
+
+.gp-danger-button {
+  background: none;
+  border: 1.5px solid #e6b0aa;
+  color: #c0392b;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 150ms, color 150ms;
+  white-space: nowrap;
+}
+
+.gp-danger-button:hover:not(:disabled) {
+  background: #fdecea;
+}
+
+.gp-danger-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .gp-panel--horarios {
+    padding: 1.25rem;
+  }
+
+  .gp-panel--horarios > .agenda-header {
+    margin-bottom: 1.35rem !important;
+  }
+
+  .gp-panel--horarios > .agenda-section + .agenda-section {
+    margin-top: 1.65rem;
+    padding-top: 1.65rem;
+  }
+}

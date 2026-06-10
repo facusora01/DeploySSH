@@ -1,0 +1,75 @@
+.historial-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+@media (max-width: 480px) {
+  .historial-page { padding: 24px 16px; }
+}
+
+.historial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.historial-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: var(--surface);
+  flex-wrap: wrap;
+  transition: background 0.1s ease;
+}
+
+.historial-row:hover {
+  background: var(--bg);
+}
+
+.historial-row.is-cancelled {
+  opacity: 0.65;
+}
+
+.historial-col-service {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 180px;
+}
+
+.historial-service-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.historial-notes {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}
+
+.historial-col-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 2 1 300px;
+}
+
+.historial-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text);
+}

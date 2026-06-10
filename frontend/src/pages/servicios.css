@@ -1,0 +1,620 @@
+/* ============================================
+   SERVICIOS STYLES
+   Pantalla de configuración de servicios del profesional + modal.
+   Colores todos desde index.css.
+============================================ */
+
+.servicios-page {
+  flex: 1;
+  width: 100%;
+  padding: 48px 24px;
+  box-sizing: border-box;
+}
+
+.servicios-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* --- Header --- */
+.servicios-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.servicios-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 580px;
+}
+
+.servicios-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.servicios-subtitle {
+  font-size: 15px;
+  color: var(--text);
+  margin: 0;
+}
+
+.servicios-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  letter-spacing: 0.2px;
+  align-self: flex-start;
+}
+
+/* --- Create button --- */
+.servicios-create-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px 11px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-fg);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+  white-space: nowrap;
+  box-shadow: 0 1px 0 rgba(44, 51, 64, 0.08);
+}
+
+.servicios-create-button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px -4px rgba(109, 148, 197, 0.45);
+}
+
+.servicios-create-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 0 rgba(44, 51, 64, 0.08);
+}
+
+.servicios-create-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* --- Feedback banner --- */
+.servicios-feedback {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  border: 1px solid;
+  border-radius: var(--radius);
+  animation: servicios-fade-in 0.25s ease-out;
+}
+
+.servicios-feedback-text {
+  flex: 1;
+}
+
+.servicios-feedback--success {
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+.servicios-feedback--error {
+  color: var(--error);
+  background: var(--error-bg);
+  border-color: var(--error);
+}
+
+.servicios-feedback-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.servicios-feedback-close:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* --- Loading / load error --- */
+.servicios-loading {
+  font-size: 14px;
+  color: var(--text);
+  text-align: center;
+  padding: 48px;
+}
+
+.servicios-error {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--error);
+  background: var(--error-bg);
+  border: 1px solid var(--error);
+  border-radius: var(--radius);
+}
+
+/* --- Empty state --- */
+.servicios-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 72px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.servicios-empty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.servicios-empty-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.servicios-empty-text {
+  font-size: 14px;
+  color: var(--text);
+  max-width: 360px;
+  margin: 0 0 8px;
+}
+
+/* --- Grid de servicios --- */
+.servicios-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 16px;
+}
+
+/* --- Card --- */
+.servicios-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px 22px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  animation: servicios-card-in 0.4s cubic-bezier(0.2, 0, 0, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+/* Barra de acento lateral — se anima en hover */
+.servicios-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent-bg);
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.servicios-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-border);
+  box-shadow:
+    rgba(44, 51, 64, 0.14) 0 16px 26px -8px,
+    rgba(44, 51, 64, 0.06) 0 6px 8px -2px;
+}
+
+.servicios-card:hover::before {
+  width: 6px;
+  background: var(--accent);
+}
+
+/* Header del card: nombre + acciones */
+.servicios-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.servicios-card-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  word-break: break-word;
+}
+
+.servicios-card-description {
+  font-size: 14px;
+  color: var(--text);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.servicios-card-meta {
+  list-style: none;
+  margin: auto 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  padding-top: 14px;
+}
+
+.servicios-card-meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.servicios-card-meta svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.servicios-card-meta span {
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+/* --- Acciones icon-only --- */
+.servicios-card-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  margin: -4px -4px 0 0;
+}
+
+.servicios-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.servicios-icon-button:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.servicios-icon-button:active {
+  transform: scale(0.94);
+}
+
+.servicios-icon-button--danger:hover {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.servicios-icon-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.servicios-icon-button:disabled:hover {
+  background: transparent;
+  color: var(--text);
+}
+
+.servicios-icon-button:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* --- Modal --- */
+.servicios-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(44, 51, 64, 0.5);
+  backdrop-filter: blur(4px);
+  animation: servicios-fade-in 0.2s ease-out;
+}
+
+.servicios-modal {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow:
+    rgba(44, 51, 64, 0.25) 0 24px 48px -12px,
+    rgba(44, 51, 64, 0.1) 0 8px 16px -4px;
+  animation: servicios-scale-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.servicios-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.servicios-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.servicios-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.servicios-modal-close:hover {
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.servicios-modal-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.servicios-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.servicios-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.servicios-form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.servicios-form-input,
+.servicios-form-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-h);
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.servicios-form-textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.servicios-form-input:focus,
+.servicios-form-textarea:focus {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.servicios-form-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.servicios-form-error {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--error);
+  background: var(--error-bg);
+  border: 1px solid var(--error);
+  border-radius: var(--radius);
+}
+
+.servicios-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.servicios-button {
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.servicios-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.servicios-button--primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: 1px solid var(--accent);
+}
+
+.servicios-button--primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.servicios-button--secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.servicios-button--secondary:hover:not(:disabled) {
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+/* --- Animaciones --- */
+@keyframes servicios-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes servicios-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes servicios-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servicios-card,
+  .servicios-modal,
+  .servicios-modal-backdrop,
+  .servicios-feedback {
+    animation: none;
+  }
+  .servicios-card,
+  .servicios-create-button,
+  .servicios-icon-button {
+    transition: none;
+  }
+  .servicios-card:hover,
+  .servicios-create-button:hover {
+    transform: none;
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 760px) {
+  .servicios-page {
+    padding: 28px 16px;
+  }
+  .servicios-title {
+    font-size: 26px;
+  }
+  .servicios-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .servicios-create-button {
+    justify-content: center;
+  }
+  .servicios-form-row {
+    grid-template-columns: 1fr;
+  }
+}

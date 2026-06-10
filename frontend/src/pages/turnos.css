@@ -1,0 +1,809 @@
+/* ============================================
+   TURNOS STYLES
+============================================ */
+
+.turnos-page {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Agenda del profesional: contenedor más ancho para que entre la semana */
+.turnos-page--agenda {
+  max-width: 1160px;
+}
+
+.turnos-header {
+  margin-bottom: 32px;
+}
+
+.turnos-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 4px;
+  letter-spacing: -0.4px;
+}
+
+.turnos-subtitle {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.turnos-empty {
+  padding: 64px 24px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.turnos-empty-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 6px;
+}
+
+.turnos-empty-text {
+  font-size: 14px;
+  color: var(--text);
+}
+
+@media (max-width: 480px) {
+  .turnos-page { padding: 24px 16px; }
+}
+
+.turnos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.turno-card-compact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  flex-wrap: wrap;
+}
+
+.turno-card-compact:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-border);
+}
+
+.turno-compact-service {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-h);
+  flex: 1 1 160px;
+}
+
+.turno-compact-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 2 1 280px;
+}
+
+.turno-compact-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.turno-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+}
+
+.turno-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
+}
+
+.turno-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.turno-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.turno-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.turno-modal-close:hover {
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.turno-modal-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.turno-modal-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.turno-modal-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.turno-modal-footer {
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.turno-status--confirmed {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.turno-status--pending {
+  background: #fef9c3;
+  color: #854d0e;
+  border: 1px solid #fde047;
+}
+
+.turno-card {
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  flex-wrap: wrap;
+}
+
+.turno-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-border);
+}
+
+.turno-info-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 300px;
+}
+
+.turno-service-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.turno-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 6px;
+  font-size: 13px;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.turno-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.turno-notes {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 13px;
+  color: var(--text);
+  font-style: italic;
+  max-width: 100%;
+}
+
+.turno-form-responses {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.turno-form-responses-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin: 0 0 8px;
+}
+
+.turno-form-responses-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.turno-form-response-item {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.turno-form-response-label {
+  font-weight: 600;
+  color: var(--text-h);
+  white-space: nowrap;
+}
+
+.turno-form-response-value {
+  color: var(--text);
+}
+
+.turno-status-badge {
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: center;
+}
+
+.turno-status--active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.turno-status--cancelled {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid var(--error-border);
+}
+
+.turno-card-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.turno-calendar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.turno-calendar-btn:hover {
+  background: var(--accent-bg, #eff6ff);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.turno-cancel-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.turno-cancel-btn:hover:not(:disabled) {
+  background: var(--error-bg);
+  color: var(--error);
+  border-color: var(--error-border);
+}
+
+.turno-cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   ESTADOS DE ASISTENCIA (US-17)
+============================================ */
+
+.turno-status--attended {
+  background: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #86efac;
+}
+
+.turno-status--no_show {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid rgba(192, 57, 43, 0.35);
+}
+
+.turno-status--completed {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.turno-attendance-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
+
+.turno-attendance-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.turno-attendance-btn--yes {
+  background: #16a34a;
+  color: #fff;
+}
+
+.turno-attendance-btn--yes:hover:not(:disabled) {
+  filter: brightness(0.93);
+}
+
+.turno-attendance-btn--no {
+  background: var(--surface);
+  color: var(--error);
+  border-color: rgba(192, 57, 43, 0.4);
+}
+
+.turno-attendance-btn--no:hover:not(:disabled) {
+  background: var(--error-bg);
+}
+
+/* ============================================
+   AGENDA DEL PROFESIONAL (US-17)
+============================================ */
+
+/* --- Barra de controles: ancho estable, independiente del contenido --- */
+.cal-toolbar {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.cal-view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.cal-view-toggle button {
+  border: none;
+  background: transparent;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.cal-view-toggle button.is-active {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.cal-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cal-nav-cluster {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cal-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius);
+  color: var(--text-h);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.cal-nav-btn:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+/* Ancho mínimo para que el rango no haga saltar las flechas al cambiar de fecha */
+.cal-range {
+  display: inline-block;
+  min-width: 220px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+/* --- Vista día: tarjeta horizontal --- */
+.cal-card {
+  gap: 16px;
+}
+
+.cal-card.is-cancelled {
+  opacity: 0.55;
+}
+
+.cal-card-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-h);
+  flex: 0 0 auto;
+  min-width: 72px;
+}
+
+.cal-card-client {
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* En vista día, el badge se ancla a la derecha */
+.turnos-list .cal-card .turno-status-badge {
+  margin-left: auto;
+}
+
+/* --- Vista semana: 7 columnas que siempre entran, sin scroll --- */
+.cal-week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  align-items: start;
+}
+
+.cal-week-col {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cal-week-col.is-today {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 1px var(--accent-border);
+}
+
+.cal-week-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cal-week-col.is-today .cal-week-head {
+  background: var(--accent-bg);
+}
+
+.cal-week-dow {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.cal-week-daynum {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.cal-week-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+}
+
+.cal-week-empty {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  padding: 8px 0;
+}
+
+/* Chip de turno compacto para la vista semana */
+.cal-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  text-align: left;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-left-width: 3px;
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s ease;
+  overflow: hidden;
+}
+
+.cal-chip:hover {
+  background: var(--bg);
+}
+
+.cal-chip.is-cancelled {
+  opacity: 0.55;
+}
+
+.cal-chip-time {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-h);
+  line-height: 1.2;
+}
+
+.cal-chip-client {
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Color del borde izquierdo del chip según estado */
+.cal-chip.turno-status--confirmed { border-left-color: var(--accent); }
+.cal-chip.turno-status--pending   { border-left-color: #d97706; }
+.cal-chip.turno-status--completed { border-left-color: var(--accent); }
+.cal-chip.turno-status--attended  { border-left-color: #16a34a; }
+.cal-chip.turno-status--no_show   { border-left-color: var(--error); }
+.cal-chip.turno-status--cancelled { border-left-color: var(--muted); }
+
+/* Badge de reembolso sobre el chip */
+.cal-chip-refund-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid var(--surface);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cal-chip-refund-badge.refund-status--pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.cal-chip-refund-badge.refund-status--done {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* ============================================
+   REEMBOLSO DE SEÑA
+============================================ */
+
+.turno-refund-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: #2563eb;
+  color: #fff;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
+
+.turno-refund-btn:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.turno-refund-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refund-status--pending {
+  background: #fef3c7;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+.refund-status--done {
+  background: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #86efac;
+}
+
+/* ============================================
+   NOTIFICACIONES (TOAST)
+============================================ */
+
+.turnos-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  min-width: 300px;
+  max-width: 450px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  font-size: 14px;
+  border: 1px solid;
+  border-radius: var(--radius);
+  animation: turnos-fade-in 0.25s ease-out;
+}
+
+.turnos-notification-text {
+  flex: 1;
+}
+
+.turnos-notification--success {
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+.turnos-notification--error {
+  color: var(--error);
+  background: var(--error-bg);
+  border-color: var(--error);
+}
+
+@keyframes turnos-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pantallas chicas: la semana pasa a una sola columna */
+@media (max-width: 640px) {
+  .cal-week {
+    grid-template-columns: 1fr;
+  }
+  .cal-toolbar {
+    justify-content: center;
+  }
+  .cal-range {
+    min-width: 0;
+    flex: 1;
+  }
+}

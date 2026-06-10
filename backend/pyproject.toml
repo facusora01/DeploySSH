@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "appointa"
+version = "0.1.0"
+description = ""
+authors = ["grupo-15"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.135.3"
+sqlalchemy = "^2.0.49"
+argon2-cffi = "^25.1.0"
+python-jose = "^3.5.0"
+psycopg2-binary = "^2.9.11"
+pydantic = {extras = ["email"], version = "^2.12.5"}
+pydantic-settings = "^2.13.1"
+uvicorn = "^0.44.0"
+alembic = "^1.18.4"
+httpx = "^0.28.1"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+bcrypt = "3.2.2"
+testcontainers = {extras = ["postgres"], version = "^4.14.2"}
+fastapi-mail = "^1.4.1"
+apscheduler = "^3.10.4"
+qrcode = "^7.4.2"
+python-multipart = "^0.0.20"
+sendgrid = "^6.12.5"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = ">=0.15.8,<0.16.0"
+pre-commit = ">=4.5.1,<5.0.0"
+pytest = ">=9.0.2,<10.0.0"
+pytest-cov = ">=7.1.0,<8.0.0"
+testcontainers = {extras = ["postgres"], version = "^4.14.2"}
+httpx = "^0.28.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

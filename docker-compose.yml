@@ -1,0 +1,64 @@
+services:
+  back:
+    build: ./backend
+    container_name: app_back
+    ports:
+      - "${BACK_PORT:-8000}:8000"
+    volumes:
+      - ./backend:/app
+      - /app/.venv
+    env_file:
+      - .env
+    environment:
+      - WHATSAPP_ENABLED=false
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+    depends_on:
+      db:
+        condition: service_healthy
+      whatsapp-service:
+        condition: service_started
+    restart: unless-stopped
+
+  front:
+    build: ./frontend
+    container_name: app_front
+    ports:
+      - "${FRONT_PORT:-3000}:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  whatsapp-service:
+    build: ./whatsapp-service
+    container_name: appointa-whatsapp
+    ports:
+      - "3001:3001"
+    volumes:
+      # Persistimos la sesión en el host: sobrevive a rebuilds/recreate del
+      # contenedor y habilita el backup/restore de session-backup.js. Sin esto, la
+      # sesión vivía solo dentro del contenedor y se perdía en cada rebuild.
+      - ./.wwhatsapp_auth:/app/.wwhatsapp_auth
+    restart: unless-stopped
+
+  db:
+    image: postgres:15-alpine
+    container_name: appointa-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-appointa}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

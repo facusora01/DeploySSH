@@ -1,0 +1,127 @@
+{
+  "key": "SCRUM-121",
+  "id": "10185",
+  "summary": "Edicion de Perfil Del Cliente y Profesional [BACK]",
+  "description": "Permitir la carga de datos simples mediante un formulario. No incluye imagenes",
+  "issue_type": "Task",
+  "priority": "Medium",
+  "status": "Completado",
+  "assignee": {
+    "display_name": "SORASIO FACUNDO",
+    "email": "fsorasio@fi.uba.ar"
+  },
+  "reporter": {
+    "display_name": "amurseli",
+    "email": "amurseli"
+  },
+  "sprint": {
+    "id": 35,
+    "name": "SCRUM Sprint 1",
+    "state": "active",
+    "board_id": 1,
+    "start_date": "2026-05-09T18:18:17.419Z",
+    "end_date": "2026-05-13T18:18:00.000Z"
+  },
+  "created": "2026-05-09T15:05:33.546-0300",
+  "updated": "2026-05-11T03:00:00.000-0300",
+  "story_points": 2,
+  "labels": [],
+  "issuelinks": [
+    {
+      "type": "Blocks",
+      "outward_issue": {
+        "key": "SCRUM-123",
+        "summary": "Edicion de Perfil Del Cliente y Profesional [FRONT]",
+        "status": "Por hacer"
+      }
+    }
+  ],
+  "project": {
+    "id": "10000",
+    "key": "SCRUM",
+    "name": "Appointa"
+  },
+  "implementation": {
+    "stack": [
+      "FastAPI (Python 3.11+)",
+      "SQLAlchemy 2.0",
+      "PostgreSQL 15",
+      "Pydantic v2",
+      "JWT (python-jose)",
+      "Docker + docker-compose"
+    ],
+    "endpoints": {
+      "cliente": [
+        {
+          "method": "GET",
+          "path": "/api/v1/clientes/me",
+          "description": "Obtener perfil del cliente autenticado"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/clientes/me",
+          "description": "Editar perfil completo del cliente"
+        },
+        {
+          "method": "PATCH",
+          "path": "/api/v1/clientes/me",
+          "description": "Actualizacion parcial del perfil del cliente"
+        }
+      ],
+      "profesional": [
+        {
+          "method": "GET",
+          "path": "/api/v1/profesionales/me",
+          "description": "Obtener perfil del profesional autenticado"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/v1/profesionales/me",
+          "description": "Editar perfil completo del profesional"
+        },
+        {
+          "method": "PATCH",
+          "path": "/api/v1/profesionales/me",
+          "description": "Actualizacion parcial del perfil del profesional"
+        }
+      ]
+    },
+    "fields_cliente": [
+      "full_name",
+      "phone",
+      "dni",
+      "date_of_birth",
+      "address",
+      "city",
+      "notes"
+    ],
+    "fields_profesional": [
+      "full_name",
+      "phone",
+      "specialty",
+      "license_number",
+      "experience_years",
+      "bio",
+      "consultation_fee"
+    ],
+    "restrictions": [
+      "No incluye manejo de imagenes",
+      "Datos simples mediante formulario",
+      "Validacion con Pydantic",
+      "Autenticacion JWT requerida"
+    ],
+    "implementation_status": {
+      "completed": true,
+      "endpoints_implemented": true,
+      "schemas_implemented": true,
+      "authentication_implemented": true,
+      "database_models_implemented": true,
+      "docker_configured": true,
+      "api_running": true,
+      "tested": true
+    }
+  },
+  "status_category": "Done",
+  "watches": 1,
+  "votes": 0
+}

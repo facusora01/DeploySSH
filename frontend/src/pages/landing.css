@@ -1,0 +1,293 @@
+/* ============================================
+   LANDING STYLES
+   Pública, pre-login: hero, banners, cta, footer.
+   Todos los colores vienen de index.css.
+============================================ */
+
+.landing-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* --- Shader de fondo, wrapper aislado del CSS de auth --- */
+.landing-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+
+  /* Máscara: shader visible solo a los costados, transparente en el centro */
+  -webkit-mask: linear-gradient(
+    to right,
+    #000 0,
+    #000 220px,
+    transparent 360px,
+    transparent calc(100% - 360px),
+    #000 calc(100% - 220px),
+    #000 100%
+  );
+  mask: linear-gradient(
+    to right,
+    #000 0,
+    #000 220px,
+    transparent 360px,
+    transparent calc(100% - 360px),
+    #000 calc(100% - 220px),
+    #000 100%
+  );
+}
+
+/* Forzamos al canvas (que tiene su propio CSS de auth) a llenar el wrapper.
+   Como el selector es más específico, gana sobre cualquier .auth-background. */
+.landing-background > canvas,
+.landing-background > .auth-background {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Contenido por encima del shader */
+.landing-hero,
+.landing-banners,
+.landing-cta,
+.landing-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Hero --- */
+.landing-hero {
+  padding: 80px 24px 64px;
+}
+
+.landing-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.landing-logo {
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 6px;
+  color: var(--accent);
+  margin: 0 0 16px;
+}
+
+.landing-tagline {
+  font-size: 18px;
+  color: var(--text);
+  margin: 0 0 32px;
+  max-width: 420px;
+}
+
+.landing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.landing-button {
+  display: block;
+  padding: 14px 24px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.landing-button--primary {
+  color: var(--accent-fg);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.landing-button--primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.landing-button--secondary {
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent-border);
+}
+
+.landing-button--secondary:hover {
+  background: var(--accent-bg);
+}
+
+/* --- Banners (con fade-in al scrollear) --- */
+.landing-banners {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.landing-banner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+  padding: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+
+  /* Estado inicial: invisible y desplazado hacia abajo */
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.landing-banner.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.landing-banner.is-reversed {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.landing-banner.is-reversed .landing-banner-text {
+  order: 2;
+}
+
+.landing-banner-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.landing-banner-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+
+.landing-banner-description {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.landing-banner-visual {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, var(--accent-bg) 0%, var(--surface) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* --- CTA final --- */
+.landing-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 80px 24px;
+
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.landing-cta.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.landing-cta-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.landing-cta-subtitle {
+  font-size: 16px;
+  color: var(--text);
+  margin: 0 0 20px;
+  max-width: 480px;
+}
+
+/* --- Footer --- */
+.landing-footer {
+  margin-top: auto;
+  background: #000000;
+  color: #999999;
+}
+
+.landing-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+}
+
+.landing-footer-text {
+  font-size: 13px;
+  margin: 0;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .landing-banner,
+  .landing-cta {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 720px) {
+  .landing-background { display: none; }
+  .landing-banners { padding: 48px 16px; gap: 40px; }
+  .landing-banner,
+  .landing-banner.is-reversed {
+    grid-template-columns: 1fr;
+    padding: 28px 20px;
+    gap: 24px;
+  }
+  .landing-banner.is-reversed .landing-banner-text { order: 0; }
+  .landing-banner-title { font-size: 22px; }
+  .landing-cta { padding: 48px 16px; }
+  .landing-cta-title { font-size: 24px; }
+}
+
+@media (max-width: 480px) {
+  .landing-hero { padding: 48px 16px 40px; }
+  .landing-logo { font-size: 28px; letter-spacing: 4px; }
+  .landing-tagline { font-size: 16px; }
+}

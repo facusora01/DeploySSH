@@ -1,0 +1,418 @@
+/* ============================================
+   PERFIL STYLES
+   Pantalla de perfil del usuario.
+============================================ */
+
+.perfil-page {
+  flex: 1;
+  width: 100%;
+  padding: 48px 24px;
+  box-sizing: border-box;
+}
+
+.perfil-container {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* --- Header --- */
+.perfil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.perfil-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 4px;
+  letter-spacing: -0.4px;
+}
+
+.perfil-subtitle {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.perfil-edit-button {
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-fg);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.perfil-edit-button:hover {
+  background: var(--accent-hover);
+}
+
+/* --- Card principal del perfil --- */
+.perfil-card {
+  display: flex;
+  gap: 24px;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.perfil-avatar {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: var(--accent-bg);
+  border-radius: 50%;
+}
+
+.perfil-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.perfil-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 4px;
+}
+
+.perfil-email {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.perfil-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.perfil-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.perfil-field-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.perfil-field-value {
+  font-size: 14px;
+  color: var(--text-h);
+  font-weight: 500;
+  margin: 0;
+}
+
+.perfil-services {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.perfil-services li {
+  padding: 18px 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.perfil-services li:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow);
+}
+
+.perfil-services strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 0.25rem;
+}
+
+.perfil-services span {
+  display: inline-flex;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.perfil-service-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.perfil-service-description {
+  margin-top: 0.5rem;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.perfil-service-duration {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* --- Sección de turnos --- */
+.perfil-appointments {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.perfil-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 16px;
+}
+
+.perfil-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 16px;
+  gap: 8px;
+}
+
+.perfil-empty-icon {
+  font-size: 40px;
+  opacity: 0.6;
+}
+
+.perfil-empty-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.perfil-empty-text {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.perfil-appointment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perfil-appointment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.perfil-appointment-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.perfil-appointment-person {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.perfil-appointment-status {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+}
+
+.perfil-appointment-status--completed {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.perfil-appointment-status--pending {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+/* --- Acciones rápidas --- */
+.perfil-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.perfil-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.perfil-action-card:hover:not(.is-disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+}
+
+.perfil-action-card.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.perfil-action-icon {
+  font-size: 28px;
+}
+
+.perfil-action-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .perfil-page { padding: 24px 16px; }
+  .perfil-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .perfil-header { justify-content: center; }
+}
+
+/* --- Public profile agenda styles --- */
+.perfil-agenda-section {
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+}
+
+.perfil-agenda-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.perfil-agenda-day-card {
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.perfil-agenda-day-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 2px;
+}
+
+.perfil-agenda-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perfil-agenda-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--accent-border);
+  font-weight: 500;
+}
+
+.perfil-agenda-empty {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  padding: 4px 0;
+}
+
+.perfil-blocks-section {
+  grid-column: 1 / -1;
+  margin-top: 1.5rem;
+}
+
+.perfil-blocks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.perfil-block-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.perfil-block-dates {
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.perfil-block-reason {
+  color: var(--muted);
+}
