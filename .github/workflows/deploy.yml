@@ -34,7 +34,7 @@ jobs:
           projectId: appointa-812ad
 
   deploy-backend:
-    name: Deploy Backend (SSH)
+    name: Deploy Backend (SSH + PM2)
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH agent
@@ -45,7 +45,7 @@ jobs:
       - name: Add server to known hosts
         run: ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Pull & restart containers
+      - name: Deploy to server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'ENDSSH'
             set -e
@@ -54,12 +54,31 @@ jobs:
             echo "--- git pull ---"
             git pull
 
-            echo "--- docker compose up ---"
-            docker compose up -d --build back whatsapp-service
-            docker compose up -d db
+            echo "--- backend: install deps ---"
+            cd backend
+            ~/.local/bin/poetry install --without dev
 
-            echo "--- running migrations ---"
-            docker compose exec -T back alembic upgrade head
+            echo "--- backend: migrations ---"
+            ~/.local/bin/poetry run alembic upgrade head
 
+            echo "--- backend: pm2 restart ---"
+            pm2 describe appointa-back > /dev/null 2>&1 \
+              && pm2 restart appointa-back \
+              || pm2 start "~/.local/bin/poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000" \
+                   --name appointa-back \
+                   --cwd ${{ secrets.SERVER_PATH }}/backend
+
+            echo "--- whatsapp: install deps ---"
+            cd ${{ secrets.SERVER_PATH }}/whatsapp-service
+            npm install --production
+
+            echo "--- whatsapp: pm2 restart ---"
+            pm2 describe appointa-whatsapp > /dev/null 2>&1 \
+              && pm2 restart appointa-whatsapp \
+              || pm2 start server.js \
+                   --name appointa-whatsapp \
+                   --cwd ${{ secrets.SERVER_PATH }}/whatsapp-service
+
+            pm2 save
             echo "Deploy exitoso - $(date)"
           ENDSSH
